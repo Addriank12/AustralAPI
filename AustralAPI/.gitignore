@@ -1,0 +1,685 @@
+﻿# Ignora archivos de compilación y dependencias
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userprefs
+*.lock.json
+*.log
+*.nupkg
+*.pdb
+*.cache
+*.dotCover
+*.vs/
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignora archivos de configuración local
+appsettings.Development.json
+appsettings.Local.json
+appsettings.private.json
+
+# Ignora archivos de la base de datos local (si usas SQLite o similar)
+*.db
+*.mdf
+*.ldf
+
+# Ignora archivos de paquetes NuGet
+.nuget/
+packages/
+*.nupkg
+
+# Ignora archivos de Docker (si no los usas)
+[Dd]ocker/
+docker-compose.*
+*.dockerignore
+
+# Ignora archivos de Azure (si no los usas)
+.azure/
+
+# Ignora archivos de Node.js (si no los usas)
+node_modules/
+npm-debug.log
+
+# Ignora archivos de frontend (si no los usas)
+wwwroot/lib/
+wwwroot/dist/
+wwwroot/css/
+wwwroot/js/
+
+# Ignora archivos de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos de configuración de Rider (si no los usas)
+.idea/
+*.sln.iml
+
+# Ignora archivos de ReSharper (si no los usas)
+_ReSharper.*
+*.ReSharper
+*.ReSharper.user
+
+# Ignora archivos de pruebas (si no los usas)
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignora archivos de herramientas
+tools/
+*.tool
+
+# Ignora archivos de caché de Visual Studio
+.vs/
+.vscode/
+
+# Ignora archivos
