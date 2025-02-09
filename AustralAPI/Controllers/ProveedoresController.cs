@@ -12,30 +12,30 @@ namespace AustralAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductosController : ControllerBase
+    public class ProveedoresController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductosController(ApplicationDbContext context)
+        public ProveedoresController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Productos       
+        // GET: api/Proveedores
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Producto>>> GetProductos(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetProveedors(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
         {
-            var productoQuery = _context.Productos.AsQueryable();
+            var proveedorQuery = _context.Proveedors.AsQueryable();
 
             if (!string.IsNullOrEmpty(filtro))
             {
-                productoQuery = productoQuery.Where(f => f.Nombre.Contains(filtro));
+                proveedorQuery = proveedorQuery.Where(f => f.Nombre.Contains(filtro));
             }
 
-            var totalFacturas = await productoQuery.CountAsync();
-            var totalPaginas = (int)Math.Ceiling(totalFacturas / (double)maximoPorPagina);
+            var totalProveedores = await proveedorQuery.CountAsync();
+            var totalPaginas = (int)Math.Ceiling(totalProveedores / (double)maximoPorPagina);
 
-            var facturas = await productoQuery
+            var proveedores = await proveedorQuery
                 .Skip((pagina - 1) * maximoPorPagina)
                 .Take(maximoPorPagina)
                 .ToListAsync();
@@ -43,35 +43,35 @@ namespace AustralAPI.Controllers
             return Ok(new
             {
                 TotalPages = totalPaginas.ToString(),
-                Data = facturas
+                Data = proveedores
             });
         }
 
-        // GET: api/Productos/5
+        // GET: api/Proveedores/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Producto>> GetProducto(long id)
+        public async Task<ActionResult<Proveedor>> GetProveedor(long id)
         {
-            var producto = await _context.Productos.FindAsync(id);
+            var proveedor = await _context.Proveedors.FindAsync(id);
 
-            if (producto == null)
+            if (proveedor == null)
             {
                 return NotFound();
             }
 
-            return producto;
+            return proveedor;
         }
 
-        // PUT: api/Productos/5
+        // PUT: api/Proveedores/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducto(long id, Producto producto)
+        public async Task<IActionResult> PutProveedor(long id, Proveedor proveedor)
         {
-            if (id != producto.Id)
+            if (id != proveedor.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(producto).State = EntityState.Modified;
+            _context.Entry(proveedor).State = EntityState.Modified;
 
             try
             {
@@ -79,7 +79,7 @@ namespace AustralAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductoExists(id))
+                if (!ProveedorExists(id))
                 {
                     return NotFound();
                 }
@@ -92,36 +92,36 @@ namespace AustralAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Productos
+        // POST: api/Proveedores
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Producto>> PostProducto(Producto producto)
+        public async Task<ActionResult<Proveedor>> PostProveedor(Proveedor proveedor)
         {
-            _context.Productos.Add(producto);
+            _context.Proveedors.Add(proveedor);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+            return CreatedAtAction("GetProveedor", new { id = proveedor.Id }, proveedor);
         }
 
-        // DELETE: api/Productos/5
+        // DELETE: api/Proveedores/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProducto(long id)
+        public async Task<IActionResult> DeleteProveedor(long id)
         {
-            var producto = await _context.Productos.FindAsync(id);
-            if (producto == null)
+            var proveedor = await _context.Proveedors.FindAsync(id);
+            if (proveedor == null)
             {
                 return NotFound();
             }
 
-            _context.Productos.Remove(producto);
+            _context.Proveedors.Remove(proveedor);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProductoExists(long id)
+        private bool ProveedorExists(long id)
         {
-            return _context.Productos.Any(e => e.Id == id);
+            return _context.Proveedors.Any(e => e.Id == id);
         }
     }
 }

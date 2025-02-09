@@ -14,41 +14,43 @@ namespace AustralAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FacturaController : ControllerBase
-    {
-        private readonly ApplicationDbContext _context;
-
-        public FacturaController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        
+    public class FacturaController(ApplicationDbContext _context) : ControllerBase
+    {        
 
         // GET: api/Factura
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Factura>>> GetFacturas(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
         {
-            var facturaQuery = _context.Facturas.AsQueryable();
-
-            if (!string.IsNullOrEmpty(filtro))
+            try
             {
-                facturaQuery = facturaQuery.Where(f => f.IdClienteNavigation.Nombre.Contains(filtro) || f.IdEmpleadoNavigation.Nombre.Contains(filtro));
+                var facturaQuery = _context.Facturas.AsQueryable();
+                facturaQuery = facturaQuery.Include(f => f.IdClienteNavigation);
+                
+
+                if (!string.IsNullOrEmpty(filtro))
+                {   
+                    facturaQuery = facturaQuery.Where(f => f.IdClienteNavigation.Nombre.Contains(filtro) || f.IdEmpleadoNavigation.Nombre.Contains(filtro));
+                }
+
+                var totalFacturas = await facturaQuery.CountAsync();
+                var totalPaginas = (int)Math.Ceiling(totalFacturas / (double)maximoPorPagina);
+
+                var facturas = await facturaQuery
+                    .Skip((pagina - 1) * maximoPorPagina)
+                    .Take(maximoPorPagina)
+                    .ToListAsync();
+
+                return Ok(new
+                {
+                    TotalPages = totalPaginas.ToString(),
+                    Data = facturas
+                });
             }
-
-            var totalFacturas = await facturaQuery.CountAsync();
-            var totalPaginas = (int)Math.Ceiling(totalFacturas / (double)maximoPorPagina);
-
-            var facturas = await facturaQuery
-                .Skip((pagina - 1) * maximoPorPagina)
-                .Take(maximoPorPagina)
-                .ToListAsync();
-
-            return Ok(new
+            catch(Exception ex)
             {
-                TotalPages = totalPaginas.ToString(),
-                Data = facturas
-            });
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         // GET: api/Factura/5
@@ -56,8 +58,11 @@ namespace AustralAPI.Controllers
         public async Task<ActionResult<Factura>> GetFactura(long id)
         {
             var factura = await _context.Facturas
-                .Include(f => f.DetalleFacturas) // Incluir los detalles de la factura
+                .Include(f => f.DetalleFacturas)
+                .Include(f => f.IdClienteNavigation)
+                .Include(f => f.IdPagoNavigation)
                 .FirstOrDefaultAsync(f => f.Id == id);
+                
 
             if (factura == null)
             {
@@ -101,34 +106,52 @@ namespace AustralAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Factura>> PostFactura(FacturaConDetallesDTO facturaDTO)
         {
-            // Crear la factura
-            var factura = new Factura
+            try
             {
-                Fecha = facturaDTO.Fecha,
-                Total = facturaDTO.Total,
-                IdCliente = facturaDTO.IdCliente,
-                IdEmpleado = facturaDTO.IdEmpleado,
-                IdPago = facturaDTO.IdPago,
-                DetalleFacturas = new List<DetalleFactura>()
-            };
-
-            // Agregar los detalles de la factura
-            foreach (var detalleDTO in facturaDTO.Detalles)
-            {
-                var detalle = new DetalleFactura
+                if (!ModelState.IsValid)
                 {
-                    IdProducto = detalleDTO.IdProducto,
-                    Cantidad = detalleDTO.Cantidad,
-                    Subtotal = detalleDTO.Subtotal
+                    return BadRequest(ModelState);
+                }
+
+                _context.Pagos.Add(facturaDTO.Pago);
+                await _context.SaveChangesAsync();
+
+                // Crear la factura
+                var factura = new Factura
+                {
+                    Fecha = facturaDTO.Fecha,
+                    Total = facturaDTO.Total,
+                    IdCliente = facturaDTO.IdCliente,
+                    IdEmpleado = facturaDTO.IdEmpleado,
+                    IdPago = facturaDTO.Pago.Id,
+                    DetalleFacturas = new List<DetalleFactura>()
                 };
-                factura.DetalleFacturas.Add(detalle);
+
+                // Agregar los detalles de la factura
+                foreach (var detalleDTO in facturaDTO.Detalles)
+                {
+                    var detalle = new DetalleFactura
+                    {
+                        IdProducto = detalleDTO.IdProducto,
+                        Cantidad = detalleDTO.Cantidad,
+                        Subtotal = detalleDTO.Subtotal
+                    };
+                    factura.DetalleFacturas.Add(detalle);
+                    var producto = _context.Productos.Single(p => p.Id.Equals(detalle.IdProducto));
+                    producto.Stock -= detalle.Cantidad;
+                    _context.Entry(producto).State = EntityState.Modified;
+                }
+                _context.Facturas.Add(factura);
+               
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetFactura", new { id = factura.Id }, factura);
             }
-
-            // Guardar la factura y los detalles en la base de datos
-            _context.Facturas.Add(factura);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetFactura", new { id = factura.Id }, factura);
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         // DELETE: api/Factura/5

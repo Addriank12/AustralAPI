@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AustralAPI.Models;
 
@@ -21,5 +22,6 @@ public partial class Cliente
 
     public string? Direccion { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Factura> Facturas { get; set; } = new List<Factura>();
 }

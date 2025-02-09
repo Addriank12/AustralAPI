@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AustralAPI.Data;
@@ -12,30 +7,30 @@ namespace AustralAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductosController : ControllerBase
+    public class ClientesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductosController(ApplicationDbContext context)
+        public ClientesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Productos       
+        // GET: api/Clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Producto>>> GetProductos(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
         {
-            var productoQuery = _context.Productos.AsQueryable();
+            var clienteQuery = _context.Clientes.AsQueryable();
 
             if (!string.IsNullOrEmpty(filtro))
             {
-                productoQuery = productoQuery.Where(f => f.Nombre.Contains(filtro));
+                clienteQuery = clienteQuery.Where(f => f.Nombre.Contains(filtro));
             }
 
-            var totalFacturas = await productoQuery.CountAsync();
+            var totalFacturas = await clienteQuery.CountAsync();
             var totalPaginas = (int)Math.Ceiling(totalFacturas / (double)maximoPorPagina);
 
-            var facturas = await productoQuery
+            var facturas = await clienteQuery
                 .Skip((pagina - 1) * maximoPorPagina)
                 .Take(maximoPorPagina)
                 .ToListAsync();
@@ -47,31 +42,31 @@ namespace AustralAPI.Controllers
             });
         }
 
-        // GET: api/Productos/5
+        // GET: api/Clientes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Producto>> GetProducto(long id)
+        public async Task<ActionResult<Cliente>> GetCliente(long id)
         {
-            var producto = await _context.Productos.FindAsync(id);
+            var cliente = await _context.Clientes.FindAsync(id);
 
-            if (producto == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
 
-            return producto;
+            return cliente;
         }
 
-        // PUT: api/Productos/5
+        // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducto(long id, Producto producto)
+        public async Task<IActionResult> PutCliente(long id, Cliente cliente)
         {
-            if (id != producto.Id)
+            if (id != cliente.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(producto).State = EntityState.Modified;
+            _context.Entry(cliente).State = EntityState.Modified;
 
             try
             {
@@ -79,7 +74,7 @@ namespace AustralAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductoExists(id))
+                if (!ClienteExists(id))
                 {
                     return NotFound();
                 }
@@ -92,36 +87,36 @@ namespace AustralAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Productos
+        // POST: api/Clientes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Producto>> PostProducto(Producto producto)
+        public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
-            _context.Productos.Add(producto);
+            _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+            return CreatedAtAction("GetCliente", new { id = cliente.Id }, cliente);
         }
 
-        // DELETE: api/Productos/5
+        // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProducto(long id)
+        public async Task<IActionResult> DeleteCliente(long id)
         {
-            var producto = await _context.Productos.FindAsync(id);
-            if (producto == null)
+            var cliente = await _context.Clientes.FindAsync(id);
+            if (cliente == null)
             {
                 return NotFound();
             }
 
-            _context.Productos.Remove(producto);
+            _context.Clientes.Remove(cliente);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProductoExists(long id)
+        private bool ClienteExists(long id)
         {
-            return _context.Productos.Any(e => e.Id == id);
+            return _context.Clientes.Any(e => e.Id == id);
         }
     }
 }
