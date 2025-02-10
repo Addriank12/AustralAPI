@@ -13,6 +13,10 @@ public partial class DetalleFactura
 
     public long IdProducto { get; set; }
 
+    [Range(0, double.MaxValue, ErrorMessage = "Ingrese un precio válido")]
+    [Required(ErrorMessage = "Ingrese el precio")]
+    public decimal Precio { get; set; }
+
     [Range(1, int.MaxValue, ErrorMessage = "Ingrese una cantidad válida")]
     [Required(ErrorMessage = "Ingrese la cantidad")]
     public int Cantidad { get; set; }

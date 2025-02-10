@@ -1,6 +1,6 @@
 ﻿namespace AustralAPI.DataTransfers
 {
-    public class DetalleFacturaDTO
+    public class DetalleCompraDTO
     {
         public long IdProducto { get; set; }
         public int Cantidad { get; set; }

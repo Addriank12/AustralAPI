@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace AustralAPI.Models;
 
@@ -13,8 +14,9 @@ public partial class DetalleCompra
 
     public int Cantidad { get; set; }
 
-    public decimal Costo { get; set; }
+    public decimal Precio { get; set; }
 
+    [JsonIgnore]
     public virtual Compra IdCompraNavigation { get; set; } = null!;
 
     public virtual Producto IdProductoNavigation { get; set; } = null!;

@@ -36,10 +36,6 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<ServicioEntrega> ServicioEntregas { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=tcp:australserver.database.windows.net,1433;Initial Catalog=austrarl_db;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Default;");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Cliente>(entity =>
@@ -90,9 +86,9 @@ public partial class ApplicationDbContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
-            entity.Property(e => e.Costo)
+            entity.Property(e => e.Precio)
                 .HasColumnType("numeric(18, 2)")
-                .HasColumnName("costo");
+                .HasColumnName("precio");
             entity.Property(e => e.IdCompra).HasColumnName("id_compra");
             entity.Property(e => e.IdProducto).HasColumnName("id_producto");
 
@@ -120,6 +116,9 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Subtotal)
                 .HasColumnType("numeric(18, 2)")
                 .HasColumnName("subtotal");
+            entity.Property(e => e.Precio)
+            .HasColumnType("numeric(18, 2)")
+            .HasColumnName("precio");
 
             entity.HasOne(d => d.IdFacturaNavigation).WithMany(p => p.DetalleFacturas)
                 .HasForeignKey(d => d.IdFactura)

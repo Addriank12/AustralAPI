@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AustralAPI.Models;
 
@@ -18,5 +19,6 @@ public partial class Proveedor
     [Required(ErrorMessage = "Ingrese la dirección del proveedor")]
     public string Direccion { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<Compra> Compras { get; set; } = new List<Compra>();
 }

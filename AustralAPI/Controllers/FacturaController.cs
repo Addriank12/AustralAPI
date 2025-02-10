@@ -134,6 +134,7 @@ namespace AustralAPI.Controllers
                     {
                         IdProducto = detalleDTO.IdProducto,
                         Cantidad = detalleDTO.Cantidad,
+                        Precio = detalleDTO.Precio,
                         Subtotal = detalleDTO.Subtotal
                     };
                     factura.DetalleFacturas.Add(detalle);
