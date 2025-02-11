@@ -23,7 +23,10 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: Build with dotnet
+      - name: locate folder
+        run: cd AustralAPI
+
+      - name: Build with dotnet        
         run: dotnet build --configuration Release
 
       - name: dotnet publish
