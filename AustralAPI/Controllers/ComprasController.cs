@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using AustralAPI.Data;
+using AustralAPI.DataTransfers;
+using AustralAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AustralAPI.Data;
-using AustralAPI.Models;
-using AustralAPI.DataTransfers;
-using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
@@ -16,7 +11,6 @@ namespace AustralAPI.Controllers
     [ApiController]
     public class ComprasController(ApplicationDbContext _context) : ControllerBase
     {
-
         // GET: api/Compras/5
         [HttpGet("{id}")]
         [Authorize]
@@ -45,7 +39,6 @@ namespace AustralAPI.Controllers
                 var compraQuery = _context.Compras.AsQueryable();
                 compraQuery = compraQuery.Include(f => f.IdProveedorNavigation);
 
-
                 if (!string.IsNullOrEmpty(filtro))
                 {
                     compraQuery = compraQuery.Where(f => f.IdProveedorNavigation.Nombre.Contains(filtro) || f.IdProveedorNavigation.Nombre.Contains(filtro));
@@ -69,7 +62,6 @@ namespace AustralAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
         // PUT: api/Compras/5
@@ -121,7 +113,7 @@ namespace AustralAPI.Controllers
                     Fecha = compraDTO.Fecha,
                     Total = compraDTO.Total,
                     IdProveedor = compraDTO.IdCliente,
-                    DetalleCompras= new List<DetalleCompra>()
+                    DetalleCompras = new List<DetalleCompra>()
                 };
 
                 // Agregar los detalles de la factura
@@ -149,7 +141,6 @@ namespace AustralAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
         // DELETE: api/Compras/5

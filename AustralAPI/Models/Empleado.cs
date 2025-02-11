@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AustralAPI.Models;
 
@@ -8,7 +6,7 @@ public partial class Empleado
 {
     public long Id { get; set; }
 
-    [Required(ErrorMessage = "Ingrese el nombre del empleado")]    
+    [Required(ErrorMessage = "Ingrese el nombre del empleado")]
     public string Nombre { get; set; } = null!;
 
     [Required(ErrorMessage = "Ingrese el email del empleado")]

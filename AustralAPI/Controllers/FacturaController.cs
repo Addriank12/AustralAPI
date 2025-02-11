@@ -1,23 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using AustralAPI.Data;
+using AustralAPI.DataTransfers;
+using AustralAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AustralAPI.Data;
-using AustralAPI.Models;
-using AustralAPI.DataTransfers;
-using System.CodeDom.Compiler;
-using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class FacturaController(ApplicationDbContext _context) : ControllerBase
-    {        
-
+    {
         // GET: api/Factura
         [HttpGet]
         [Authorize]
@@ -27,10 +20,9 @@ namespace AustralAPI.Controllers
             {
                 var facturaQuery = _context.Facturas.AsQueryable();
                 facturaQuery = facturaQuery.Include(f => f.IdClienteNavigation);
-                
 
                 if (!string.IsNullOrEmpty(filtro))
-                {   
+                {
                     facturaQuery = facturaQuery.Where(f => f.IdClienteNavigation.Nombre.Contains(filtro) || f.IdEmpleadoNavigation.Nombre.Contains(filtro));
                 }
 
@@ -48,11 +40,10 @@ namespace AustralAPI.Controllers
                     Data = facturas
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            
         }
 
         // GET: api/Factura/5
@@ -65,7 +56,6 @@ namespace AustralAPI.Controllers
                 .Include(f => f.IdClienteNavigation)
                 .Include(f => f.IdPagoNavigation)
                 .FirstOrDefaultAsync(f => f.Id == id);
-                
 
             if (factura == null)
             {
@@ -148,16 +138,15 @@ namespace AustralAPI.Controllers
                     _context.Entry(producto).State = EntityState.Modified;
                 }
                 _context.Facturas.Add(factura);
-               
+
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetFactura", new { id = factura.Id }, factura);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            
         }
 
         // DELETE: api/Factura/5

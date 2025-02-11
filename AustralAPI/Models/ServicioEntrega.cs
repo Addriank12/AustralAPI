@@ -1,7 +1,4 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AustralAPI.Models;
 
@@ -19,5 +16,3 @@ public partial class ServicioEntrega
 
     public virtual Factura IdFacturaNavigation { get; set; } = null!;
 }
-
-

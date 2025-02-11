@@ -12,6 +12,7 @@ namespace AustralAPI.DataTransfers
 
         [Required(ErrorMessage = "Ingrese el tipo de pago")]
         public Pago Pago { get; set; }
+
         public List<DetalleCompraDTO> Detalles { get; set; } = new List<DetalleCompraDTO>();
     }
 }

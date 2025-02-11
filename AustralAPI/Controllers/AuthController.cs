@@ -3,15 +3,12 @@ using AustralAPI.Models;
 using AustralAPI.Security;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AustralAPI.Controllers
 {
     [ApiController]
-
     public class AuthController(ApplicationDbContext _context, Jwt jwt) : Controller
     {
-
         [HttpPost("register")]
         public IActionResult Register([FromBody] Cliente cliente)
         {
@@ -63,7 +60,7 @@ namespace AustralAPI.Controllers
             // Si la contraseña es válida, generar un token de autenticación (opcional)
             var token = jwt.GenerateJwtToken(cliente);
 
-            return Ok(new { Message = "Inicio de sesión exitoso", Token = token, Cliente = cliente.Id});
+            return Ok(new { Message = "Inicio de sesión exitoso", Token = token, Cliente = cliente.Id });
         }
     }
 }

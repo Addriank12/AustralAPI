@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AustralAPI.Models;
+﻿using AustralAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AustralAPI.Data;
@@ -261,6 +259,5 @@ public partial class ApplicationDbContext : DbContext
         OnModelCreatingPartial(modelBuilder);
     }
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    private partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
-

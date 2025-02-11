@@ -6,9 +6,8 @@ namespace AustralAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DashboardController: Controller
+    public class DashboardController : Controller
     {
-
         private readonly ApplicationDbContext _context;
 
         public DashboardController(ApplicationDbContext context)
