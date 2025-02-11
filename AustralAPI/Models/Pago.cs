@@ -9,7 +9,7 @@ public partial class Pago
 {
     public long Id { get; set; }
 
-    [Required(ErrorMessage = "Ingrese la fecha del pago")]
+    [Required(ErrorMessage = "Ingrese el metodo de pago")]
     public string Metodo { get; set; } = null!;
 
     [Required(ErrorMessage = "Ingrese el monto del pago")]

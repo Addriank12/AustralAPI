@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AustralAPI.Data;
 using AustralAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
@@ -18,6 +19,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Clientes
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
         {
             var clienteQuery = _context.Clientes.AsQueryable();
@@ -59,6 +61,7 @@ namespace AustralAPI.Controllers
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutCliente(long id, Cliente cliente)
         {
             if (id != cliente.Id)
@@ -90,6 +93,7 @@ namespace AustralAPI.Controllers
         // POST: api/Clientes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
             _context.Clientes.Add(cliente);
@@ -100,6 +104,7 @@ namespace AustralAPI.Controllers
 
         // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteCliente(long id)
         {
             var cliente = await _context.Clientes.FindAsync(id);

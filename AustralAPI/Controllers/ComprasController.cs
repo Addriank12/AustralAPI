@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AustralAPI.Data;
 using AustralAPI.Models;
 using AustralAPI.DataTransfers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
@@ -18,6 +19,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Compras/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Compra>> GetCompra(long id)
         {
             var compra = await _context.Compras
@@ -35,6 +37,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Compras
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Compra>>> GetCompras(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
         {
             try
@@ -72,6 +75,7 @@ namespace AustralAPI.Controllers
         // PUT: api/Compras/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutCompra(long id, Compra compra)
         {
             if (id != compra.Id)
@@ -101,6 +105,7 @@ namespace AustralAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Factura>> PostCompra(CompraConDetallesDTO compraDTO)
         {
             try
@@ -149,6 +154,7 @@ namespace AustralAPI.Controllers
 
         // DELETE: api/Compras/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteCompra(long id)
         {
             var compra = await _context.Compras.FindAsync(id);

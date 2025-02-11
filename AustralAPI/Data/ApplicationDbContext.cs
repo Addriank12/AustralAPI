@@ -57,6 +57,8 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Telefono)
                 .HasMaxLength(20)
                 .HasColumnName("telefono");
+            entity.Property(e => e.Password)
+                .HasColumnName("password");
         });
 
         modelBuilder.Entity<Compra>(entity =>
@@ -261,3 +263,4 @@ public partial class ApplicationDbContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
+

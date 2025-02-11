@@ -9,6 +9,7 @@ using AustralAPI.Data;
 using AustralAPI.Models;
 using AustralAPI.DataTransfers;
 using System.CodeDom.Compiler;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
@@ -19,6 +20,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Factura
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Factura>>> GetFacturas(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
         {
             try
@@ -55,6 +57,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Factura/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Factura>> GetFactura(long id)
         {
             var factura = await _context.Facturas
@@ -75,6 +78,7 @@ namespace AustralAPI.Controllers
         // PUT: api/Factura/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutFactura(long id, Factura factura)
         {
             if (id != factura.Id)
@@ -104,6 +108,7 @@ namespace AustralAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Factura>> PostFactura(FacturaConDetallesDTO facturaDTO)
         {
             try
@@ -157,6 +162,7 @@ namespace AustralAPI.Controllers
 
         // DELETE: api/Factura/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteFactura(long id)
         {
             var factura = await _context.Facturas.FindAsync(id);

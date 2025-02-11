@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AustralAPI.Data;
 using AustralAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
@@ -23,6 +24,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Proveedores
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetProveedors(int pagina = 1, int maximoPorPagina = 10, string? filtro = null)
         {
             var proveedorQuery = _context.Proveedors.AsQueryable();
@@ -49,6 +51,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Proveedores/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Proveedor>> GetProveedor(long id)
         {
             var proveedor = await _context.Proveedors.FindAsync(id);
@@ -64,6 +67,7 @@ namespace AustralAPI.Controllers
         // PUT: api/Proveedores/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutProveedor(long id, Proveedor proveedor)
         {
             if (id != proveedor.Id)
@@ -95,6 +99,7 @@ namespace AustralAPI.Controllers
         // POST: api/Proveedores
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Proveedor>> PostProveedor(Proveedor proveedor)
         {
             _context.Proveedors.Add(proveedor);
@@ -105,6 +110,7 @@ namespace AustralAPI.Controllers
 
         // DELETE: api/Proveedores/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteProveedor(long id)
         {
             var proveedor = await _context.Proveedors.FindAsync(id);

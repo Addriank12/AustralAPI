@@ -1,4 +1,5 @@
 ﻿using AustralAPI.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AustralAPI.Controllers
@@ -16,6 +17,7 @@ namespace AustralAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult GetDashboardData()
         {
             try

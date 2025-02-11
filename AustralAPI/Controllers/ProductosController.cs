@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AustralAPI.Data;
 using AustralAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
@@ -64,6 +65,7 @@ namespace AustralAPI.Controllers
         // PUT: api/Productos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutProducto(long id, Producto producto)
         {
             if (id != producto.Id)
@@ -95,6 +97,7 @@ namespace AustralAPI.Controllers
         // POST: api/Productos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Producto>> PostProducto(Producto producto)
         {
             _context.Productos.Add(producto);
@@ -105,6 +108,7 @@ namespace AustralAPI.Controllers
 
         // DELETE: api/Productos/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteProducto(long id)
         {
             var producto = await _context.Productos.FindAsync(id);

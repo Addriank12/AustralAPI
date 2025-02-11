@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AustralAPI.Data;
 using AustralAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AustralAPI.Controllers
 {
@@ -23,6 +24,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Empleados
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Empleado>>> GetEmpleados()
         {
             return await _context.Empleados.ToListAsync();
@@ -30,6 +32,7 @@ namespace AustralAPI.Controllers
 
         // GET: api/Empleados/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Empleado>> GetEmpleado(long id)
         {
             var empleado = await _context.Empleados.FindAsync(id);
@@ -45,6 +48,7 @@ namespace AustralAPI.Controllers
         // PUT: api/Empleados/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutEmpleado(long id, Empleado empleado)
         {
             if (id != empleado.Id)
@@ -76,6 +80,7 @@ namespace AustralAPI.Controllers
         // POST: api/Empleados
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Empleado>> PostEmpleado(Empleado empleado)
         {
             _context.Empleados.Add(empleado);
@@ -86,6 +91,7 @@ namespace AustralAPI.Controllers
 
         // DELETE: api/Empleados/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteEmpleado(long id)
         {
             var empleado = await _context.Empleados.FindAsync(id);

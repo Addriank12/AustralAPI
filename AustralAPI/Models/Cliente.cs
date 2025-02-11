@@ -20,6 +20,7 @@ public partial class Cliente
 
     public string Email { get; set; } = null!;
 
+    public string Password { get; set; } = null!;
     public string? Direccion { get; set; }
 
     [JsonIgnore]
