@@ -15,10 +15,10 @@ namespace AustralAPI.Security
 
             var claims = new[]
             {
-        new Claim(JwtRegisteredClaimNames.Sub, cliente.Email),
-        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        new Claim("clienteId", cliente.Id.ToString())
-    };
+                new Claim(JwtRegisteredClaimNames.Sub, cliente.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("clienteId", cliente.Id.ToString())
+            };
 
             var token = new JwtSecurityToken(
                 claims: claims,

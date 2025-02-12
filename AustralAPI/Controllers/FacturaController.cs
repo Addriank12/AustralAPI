@@ -19,7 +19,8 @@ namespace AustralAPI.Controllers
             try
             {
                 var facturaQuery = _context.Facturas.AsQueryable();
-                facturaQuery = facturaQuery.Include(f => f.IdClienteNavigation);
+                facturaQuery = facturaQuery.Include(f => f.IdClienteNavigation)
+                    .OrderByDescending(f => f.Fecha);
 
                 if (!string.IsNullOrEmpty(filtro))
                 {

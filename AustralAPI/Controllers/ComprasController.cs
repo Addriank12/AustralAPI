@@ -37,7 +37,8 @@ namespace AustralAPI.Controllers
             try
             {
                 var compraQuery = _context.Compras.AsQueryable();
-                compraQuery = compraQuery.Include(f => f.IdProveedorNavigation);
+                compraQuery = compraQuery.Include(f => f.IdProveedorNavigation)
+                    .OrderByDescending(c => c.Fecha);
 
                 if (!string.IsNullOrEmpty(filtro))
                 {
